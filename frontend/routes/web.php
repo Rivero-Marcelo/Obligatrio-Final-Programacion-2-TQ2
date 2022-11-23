@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LogController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +29,13 @@ function(){
 });
 
 Route::post('/producto', [ProductoController::class, "nuevo"])->name('producto.nuevo');
+
+Route::get('/login', [LogController::class, 'index'])->name('login');
+Route::post('/login', [LogController::class, 'autenticar'])->name('autenticar');
+
+Route::get('/register', [UserController::class, 'create'])->name('usuario.create');
+Route::post('/register', [UserController::class, 'store'])->name('usuario.store');
+
+
+
 
