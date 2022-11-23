@@ -19,4 +19,12 @@ Route::get('/', function () {
 });
 
 
-Route::get('producto/listado', [ProductoController::class, "index"]);
+Route::get('/producto/listado', [ProductoController::class, "Listado"]);
+
+Route::get('/producto/nuevo', 
+function(){
+    return view('/Productos/NuevoProducto');
+});
+
+Route::post('/producto', [ProductoController::class, "nuevo"])->name('producto.nuevo');
+
