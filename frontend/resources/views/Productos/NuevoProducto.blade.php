@@ -11,7 +11,7 @@
 <h1>NUEVO PRODUCTO</h1>
 <br>
 
-<form action={{route('producto.nuevo')}} method="post">
+<form action={{route('producto.store')}} method="post">
     @csrf
 
 <b>Nombre:</b> <br><input type="text" name="nombre"><br><br>
@@ -22,22 +22,10 @@
 
 </form>
 
-@if(session('success'))
-        <br>
-        <div style="color: red;">{{session('success')}}</div>
-@endif
-        <br>
-
-@if($errors->any())
-<br>
-    @foreach ($errors->all() as $error)
-    <div style="color: red;">{{$error}}</div>
-    @endforeach
-@endif
  
 <br>
 
     
 </body>
 </html>
-Footer
+

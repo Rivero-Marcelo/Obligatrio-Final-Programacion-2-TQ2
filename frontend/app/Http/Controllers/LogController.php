@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Arr;
 
 class LogController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
-       // if(Auth::check()){
-         //   return redirect()->route('home');
-       // }
+      if ($request->session()->has('autenticado')) {
 
+        return redirect()->route('home');
         
-        return view('login');
+    }     
+        
+       return view('login');
     }
 
 
@@ -27,7 +29,21 @@ class LogController extends Controller
 
       ]);
 
-      return $response;
+      $response = json_decode($response, true);
+
+      if(Arr::exists($response, 'access_token')){
+        $request->session()->regenerate();
+        $request->session()->put('autenticado', true);
+        return redirect()->route('home');
+
+      }
+
+      return redirect()->back()->with('error_login', $response['error']);
+      
+
+      
+
+      
 
 
     //    if (Auth::attempt($credenciales)) {    
@@ -44,7 +60,11 @@ class LogController extends Controller
 
 
     public function logout() {
-        session()->flush();
+
+      $response = Http::acceptJson()->post('http://localhost:8888/api/auth/logout');
+     
+     
+      //   session()->flush();
       //  Auth::logout();
 
         return redirect()->route('login');

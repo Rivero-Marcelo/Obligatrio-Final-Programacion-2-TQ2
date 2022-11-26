@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class ProductoController extends Controller
 {
+
+    public function create(){
+
+        return view ('/Productos/NuevoProducto');
+    }
     
-    public function Listado()
+    public function showAll()
     {
-        $response = Http::get('localhost:8080/api/producto');
+        $response = Http::acceptJson()->get('localhost:8800/api/producto');
         $productos = json_decode($response, true);
         return view('Productos/GestionProductos',['productos' => $productos]);
    
@@ -19,17 +24,17 @@ class ProductoController extends Controller
 
     public function Eliminar(Request $request, $id)
     {
-        $response = Http::delete('localhost:8000/api/producto/');
+        $response = Http::delete('localhost:8800/api/producto/');
 
     }
 
-    public function Nuevo(Request $request)
+    public function store(Request $request)
     {
-        $response = Http::post('localhost:8000/producto', [
+        $response = Http::acceptJson()->post('localhost:8800/api/producto', [
 
-            "nombre" => $request -> post["nombre"],
-            "descripcion" => $request -> post["descripcion"],
-            "stock" => $request -> post["stock"]
+            "nombre" => $request -> post('nombre'),
+            "descripcion" => $request -> post('descripcion'),
+            "stock" => $request -> post('stock')
         ]);
 
         return $response;

@@ -12,29 +12,16 @@
     <div><form  action= {{ route('login') }}    method="post">
         @csrf
         Email  <input type="text" name="email"> Contraseña 
-        <input type="password" name="password">  
+        <input type="password" name="password">  <br><br>
         <input type="submit" value="Iniciar Sesión"></form><br>
     </div>
-
     <br>
 
- 
 
     @if(session()->has('error_login'))
     <div style="color: red;">{{session()->get('error_login')}}</div>
     @endif
 
-
-    @if ($errors->any())
-    @foreach($errors->all() as $error)
-    <div style="color: red;">{{$error }}</div>
-    @endforeach
-    @endif
-
-
-
-
     
 </body>
 </html>
-Footer

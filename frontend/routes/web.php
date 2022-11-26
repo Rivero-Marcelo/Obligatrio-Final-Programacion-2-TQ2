@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\Sesion;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,26 +17,40 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
+
+
+
+
+// *********** Rutas hacia api-productos ************** \\ 
+
+Route::middleware([Sesion::class])->group(function(){
+
+    Route::get('/home', function (){
+        return view('home'); 
+    })->name('home');
+
+    Route::post('/producto/nuevo', [ProductoController::class, "store"])->name('producto.store');
+    Route::get('/producto/nuevo', [ProductoController::class, "create"])->name('producto.create');
+    Route::get('/producto', [ProductoController::class, "showAll"])->name('producto.showAll');
+
+});
+
+// ****************************************** \\
+
+
+
+// ******* rutas hacia api.auth ************ \\
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
-
-
-Route::get('/producto/listado', [ProductoController::class, "Listado"]);
-
-Route::get('/producto/nuevo', 
-function(){
-    return view('/Productos/NuevoProducto');
-});
-
-Route::post('/producto', [ProductoController::class, "nuevo"])->name('producto.nuevo');
 
 Route::get('/login', [LogController::class, 'index'])->name('login');
 Route::post('/login', [LogController::class, 'autenticar'])->name('autenticar');
-
 Route::get('/register', [UserController::class, 'create'])->name('usuario.create');
 Route::post('/register', [UserController::class, 'store'])->name('usuario.store');
 
 
-
+// ****************************************** \\
 
