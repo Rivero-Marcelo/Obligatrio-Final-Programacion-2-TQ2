@@ -74,7 +74,7 @@ class ProductoController extends Controller
         $producto = Producto::findOrFail($id);
         $producto->delete();
 
-        return [ 'mensaje' => 'Se eliminó el producto.'];
+        return [ 'mensaje' => 'Eliminado'];
 
     }
 

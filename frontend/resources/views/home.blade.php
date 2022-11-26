@@ -12,9 +12,13 @@
 </div>
 
     
-    <h2 align="center">HOME</h2><br>
+    <h2 align="center">HOME</h2><br><br>
 
-   
+
+
+   <div><a href={{route('producto.create')}}>Nuevo Producto</a><br><br>
+    <a href={{route('producto.showAll')}}>Ver Productos</a></div><br>
+</div>
 
 
     <div>

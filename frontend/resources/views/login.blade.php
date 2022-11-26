@@ -16,6 +16,13 @@
         <input type="submit" value="Iniciar Sesión"></form><br>
     </div>
     <br>
+    <br>
+
+    <div><a href={{route('usuario.create')}}>Registrarse</a></div>    
+    </div>
+    <br><br>
+
+
 
 
     @if(session()->has('error_login'))

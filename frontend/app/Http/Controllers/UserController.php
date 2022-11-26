@@ -25,7 +25,7 @@ class UserController extends Controller
             'password' => $request -> post('password')
         ]); 
 
-    return $response;
-      //  return back()->withSuccess('Usuario creado con éxito');
+   // return $response;
+    return back()->withSuccess('Usuario creado con éxito');
     }
 }

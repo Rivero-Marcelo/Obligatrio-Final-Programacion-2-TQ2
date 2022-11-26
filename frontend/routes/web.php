@@ -33,6 +33,7 @@ Route::middleware([Sesion::class])->group(function(){
     Route::post('/producto/nuevo', [ProductoController::class, "store"])->name('producto.store');
     Route::get('/producto/nuevo', [ProductoController::class, "create"])->name('producto.create');
     Route::get('/producto', [ProductoController::class, "showAll"])->name('producto.showAll');
+    Route::get('/producto/{id}', [ProductoController::class, "destroy"])->name('producto.destroy');
 
 });
 

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GESTIÓN DE PRODUCTOS</title>
+    <title>LISTADO DE PRODUCTOS</title>
 </head>
 <body>
 
-    <h2>GESTION DE PRODUCTOS</h2>
+    <h2>LISTADO DE PRODUCTOS</h2>
 
 
 
@@ -16,11 +16,7 @@
             <b>Nombre:</b> {{$producto['nombre']}} 
             <b>Descripcion:</b> {{$producto['descripcion']}}
             <b>Stock:</b> {{$producto['stock']}}
-            <form action="" method="POST">
-                @method('DELETE')
-                @csrf
-            </form>
-            
+            <a href={{route('producto.destroy', ['id' => $producto['id']])}}>Eliminar</a>
             <br><br>
             
     @endforeach

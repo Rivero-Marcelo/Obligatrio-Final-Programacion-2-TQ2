@@ -17,14 +17,15 @@ class ProductoController extends Controller
     {
         $response = Http::acceptJson()->get('localhost:8800/api/producto');
         $productos = json_decode($response, true);
-        return view('Productos/GestionProductos',['productos' => $productos]);
+        return view('Productos/listadoProductos',['productos' => $productos]);
    
 
     }
 
-    public function Eliminar(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
-        $response = Http::delete('localhost:8800/api/producto/');
+        $response = Http::acceptJson()->delete('localhost:8800/api/producto/' . $id);
+        return redirect()->route('producto.showAll');
 
     }
 
