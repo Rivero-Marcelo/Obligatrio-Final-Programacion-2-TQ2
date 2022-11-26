@@ -36,7 +36,7 @@ Route::middleware([Sesion::class])->group(function(){
 
 });
 
-// ****************************************** \\
+// *************************************************** \\
 
 
 
@@ -46,6 +46,8 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+
+Route::get('/logout', [LogController::class, 'logout'])->name('logout')->middleware(Sesion::class);
 Route::get('/login', [LogController::class, 'index'])->name('login');
 Route::post('/login', [LogController::class, 'autenticar'])->name('autenticar');
 Route::get('/register', [UserController::class, 'create'])->name('usuario.create');

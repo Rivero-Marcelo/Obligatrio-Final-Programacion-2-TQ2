@@ -34,40 +34,24 @@ class LogController extends Controller
       if(Arr::exists($response, 'access_token')){
         $request->session()->regenerate();
         $request->session()->put('autenticado', true);
+        $request->session()->put('token', $response['access_token']);
         return redirect()->route('home');
 
       }
 
       return redirect()->back()->with('error_login', $response['error']);
       
-
-      
-
-      
-
-
-    //    if (Auth::attempt($credenciales)) {    
-            
-      //      $request->session()->regenerate();
-            
-        //    return redirect()->route('home');
-       // }
-
-
-      //  return redirect()->back()->with('error_login', 'Las credenciales no son válidas');
         
     }
 
 
-    public function logout() {
+    public function logout(Request $request) {
 
-      $response = Http::acceptJson()->post('http://localhost:8888/api/auth/logout');
+    $response = Http::withToken($request->session()->get('token'))->post('http://localhost:8888/api/auth/logout');
      
-     
-      //   session()->flush();
-      //  Auth::logout();
-
-        return redirect()->route('login');
+     $request->session()->flush();
+      
+     return redirect()->route('login');
 
 }
 
