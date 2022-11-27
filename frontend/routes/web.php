@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompraController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogController;
@@ -18,6 +19,17 @@ use App\Http\Middleware\Sesion;
 */
 
 
+
+
+// ************** Rutas hacia api-registroVentas ******************* \\
+
+Route::get('/compras', [CompraController::class, "create"])->name('compra.create');
+Route::get('/compra/confirmar', [CompraController::class, "confirmarCompra"])->name('compra.confirmar');
+Route::post('/compra/confirmar', [CompraController::class, "store"])->name('compra.store');
+
+
+
+// ***************************************************************** \\
 
 
 

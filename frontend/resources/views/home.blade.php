@@ -16,12 +16,14 @@
 
 
 
-   <div><a href={{route('producto.create')}}>Nuevo Producto</a><br><br>
+    <div><a href={{route('producto.create')}}>Nuevo Producto</a><br><br>
     <a href={{route('producto.showAll')}}>Ver Productos</a></div><br>
-</div>
+    </div>
+    <br>
+    <div><a href={{route('compra.create')}}>Compras</a><br>
+    </div><br>
+    </div>
 
-
-    <div>
  
 
     
