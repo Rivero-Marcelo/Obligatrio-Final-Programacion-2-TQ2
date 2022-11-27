@@ -18,26 +18,18 @@ use App\Http\Middleware\Sesion;
 |
 */
 
+Route::middleware([Sesion::class])->group(function(){
 
 
 
 // ************** Rutas hacia api-registroVentas ******************* \\
-
 Route::get('/compras', [CompraController::class, "create"])->name('compra.create');
 Route::get('/compra/confirmar', [CompraController::class, "confirmarCompra"])->name('compra.confirmar');
 Route::post('/compra/confirmar', [CompraController::class, "store"])->name('compra.store');
-
-
-
 // ***************************************************************** \\
 
 
-
-
 // *********** Rutas hacia api-productos ************** \\ 
-
-Route::middleware([Sesion::class])->group(function(){
-
     Route::get('/home', function (){
         return view('home'); 
     })->name('home');
@@ -46,9 +38,7 @@ Route::middleware([Sesion::class])->group(function(){
     Route::get('/producto/nuevo', [ProductoController::class, "create"])->name('producto.create');
     Route::get('/producto', [ProductoController::class, "showAll"])->name('producto.showAll');
     Route::get('/producto/{id}', [ProductoController::class, "destroy"])->name('producto.destroy');
-
 });
-
 // *************************************************** \\
 
 

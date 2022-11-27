@@ -36,13 +36,16 @@ class LogController extends Controller
         $request->session()->put('autenticado', true);
         $request->session()->put('token', $response['access_token']);
         
-        return $usuario = UserController::me($request);
+        $usuario = UserController::me($request);
+
+        $request->session()->put('idUsuario', $usuario['id'] );
+        $request->session()->put('nombreUsuario', $usuario['name']); 
 
         return redirect()->route('home');
 
       }
 
-      return redirect()->back()->with('error_login', $response['error']);
+        return redirect()->back()->with('error_login', $response['error']);
       
         
     }

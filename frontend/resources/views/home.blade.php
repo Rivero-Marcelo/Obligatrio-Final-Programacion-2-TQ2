@@ -8,12 +8,15 @@
 </head>
 <body>
 
-    <div><a href={{route('logout')}}>Cerrar Sesión</a></div><br>
-</div>
+    @if (session('usuario'))
+        
+    @endif
+
+    <div><a href={{route('logout')}}>Cerrar Sesión</a><h3>Usuario: {{session()->get('nombreUsuario')}}</h3></div>
+    </div>
 
     
     <h2 align="center">HOME</h2><br><br>
-
 
 
     <div><a href={{route('producto.create')}}>Nuevo Producto</a><br><br>

@@ -10,15 +10,23 @@
 
     <h2>CONFIRMAR COMPRA</h2>
 
+    <br><br>
+
+    CLIENTE: {{session()->get('nombreUsuario')}} <br><br>
+    ------------------------------------------------------------------
+    <br><br>
+    PRODUCTO: {{$producto['nombre']}}
+
 
     <div>
-
         <form action={{route('compra.store')}} method="post">
             @csrf
-            <input type="text" name="idProducto" disabled="true" value={{$datos['id']}}>
-            <br><br>
-            <input type="submit" value="Confirmar Compra"></form><br>
 
+                    <input type="hidden" name="idProducto"  value={{$producto['id']}}>
+            <br>
+        Cantidad:   <input type="text" name="cantidad"  value=1><br><br><br><br>
+
+                             <input type="submit" value="Confirmar Compra"><br>
         </form>
     </div>
     

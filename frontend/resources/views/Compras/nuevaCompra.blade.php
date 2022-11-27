@@ -18,7 +18,7 @@
             <b>Nombre:</b> {{$producto['nombre']}} 
             <b>Descripcion:</b> {{$producto['descripcion']}}
             <b>Stock:</b> {{$producto['stock']}}
-            <a href={{route('compra.confirmar', ['id' => $producto['id']])}}>COMPRAR</a>
+            <a href={{route('compra.confirmar', ['nombre' => $producto['nombre'], 'id' => $producto['id']])}}>COMPRAR</a>
             <br><br>
             
     @endforeach
