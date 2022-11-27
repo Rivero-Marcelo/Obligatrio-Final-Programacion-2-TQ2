@@ -28,4 +28,17 @@ class UserController extends Controller
    
     return back()->withSuccess('Usuario creado con éxito');
     }
+
+    
+    
+    public static function me(Request $request){
+
+        $response = Http::acceptJson()->withToken($request->session()->get('token'))
+            ->post('http://localhost:8888/api/auth/me');
+        
+        return $usuario = json_decode($response, true);
+
+    }
+
+    
 }

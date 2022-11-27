@@ -35,6 +35,9 @@ class LogController extends Controller
         $request->session()->regenerate();
         $request->session()->put('autenticado', true);
         $request->session()->put('token', $response['access_token']);
+        
+        return $usuario = UserController::me($request);
+
         return redirect()->route('home');
 
       }
