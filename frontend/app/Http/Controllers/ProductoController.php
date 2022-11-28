@@ -25,7 +25,7 @@ class ProductoController extends Controller
     public function destroy(Request $request, $id)
     {
         $response = Http::acceptJson()->delete('localhost:8800/api/producto/' . $id);
-        return redirect()->route('producto.showAll');
+        return redirect()->route('producto.showAll')->with(['success' => 'Producto eliminado']);
 
     }
 
@@ -41,8 +41,6 @@ class ProductoController extends Controller
         return $response;
 
     }
-
-
 
 
 }

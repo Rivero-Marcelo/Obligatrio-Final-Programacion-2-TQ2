@@ -26,6 +26,8 @@ Route::middleware([Sesion::class])->group(function(){
 Route::get('/compras', [CompraController::class, "create"])->name('compra.create');
 Route::get('/compra/confirmar', [CompraController::class, "confirmarCompra"])->name('compra.confirmar');
 Route::post('/compra/confirmar', [CompraController::class, "store"])->name('compra.store');
+Route::get('/compra/listado', [CompraController::class, "showAll"])->name('compra.showAll');
+
 // ***************************************************************** \\
 
 

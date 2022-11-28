@@ -49,6 +49,15 @@ class CompraController extends Controller
 
     }
 
+
+    public function showAll()
+    {
+        $response = Http::acceptJson()->get('localhost:8900/api/ventas/listado');
+        $compras = json_decode($response, true);
+        return view('Compras/listaCompras',['compras' => $compras]);
+   
+
+    }
     
     
     private static function actualizarStock($id, $cantidad){

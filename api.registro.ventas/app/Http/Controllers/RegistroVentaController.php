@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RegistroVenta;
+use Illuminate\Support\Facades\Http;
+
 
 class RegistroVentaController extends Controller
 {
+
+
+    public function index(){
+
+        $ventas = RegistroVenta::all();
+        return $ventas;
+}
+
     public function store(Request $request)
     {
 
@@ -26,5 +36,7 @@ class RegistroVentaController extends Controller
 
 
     }
+
+    
 
 }

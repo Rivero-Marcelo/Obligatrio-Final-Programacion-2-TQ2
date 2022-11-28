@@ -27,5 +27,6 @@ Route::middleware([ValidarAcceso::class])->group(function(){
     });
 
 Route::post('/ventas/registro', [RegistroVentaController::class, 'store']);
+Route::get('/ventas/listado', [RegistroVentaController::class, 'index']);
 
 });

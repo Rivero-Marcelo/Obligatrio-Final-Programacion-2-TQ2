@@ -25,6 +25,10 @@
     <br>
     <div><a href={{route('compra.create')}}>Compras</a><br>
     </div><br>
+    <br><br>
+    <div><a href={{route('compra.showAll')}}>Ver Compras</a><br>
+    </div><br>
+
     </div>
 
  
