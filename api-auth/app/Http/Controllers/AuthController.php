@@ -34,7 +34,7 @@ class AuthController extends Controller
             return response()->json(['error' => 'No autorizado, credenciales inválidas.'], 401);
         }
 
-        AuthController::validado($token);
+        AuthController::validadorAccesoApis();
 
         return $this->respondWithToken($token);
     }
@@ -105,12 +105,14 @@ class AuthController extends Controller
 
 
 
-    public static function validado($token){
+    private static function validadorAccesoApis(){
 
-        $response = Http::post('localhost:8800/api', [
-
+        $response_productos = Http::post('localhost:8800/api', [
             'validadoAuth' => "OK"
+        ]);
 
+        $response_ventas = Http::post('localhost:8900/api', [
+            'validadoAuth' => "OK"
         ]);
 
 

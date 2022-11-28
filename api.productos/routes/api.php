@@ -29,11 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware([ValidarAcceso::class])->group(function(){
 
 Route::post('/', function(){
-    return [
-
-        'status' => "OK",
-    ];
-
+    return response()->json(['status' => 'OK'], 200);  
 });
 
 
