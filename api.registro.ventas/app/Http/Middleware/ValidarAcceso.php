@@ -20,10 +20,16 @@ class ValidarAcceso
 
         $validado = Cache::get('validado', 'false');
 
-        if($request->has('validadoAuth')){
+        if($request->has('validadoAuth') && request('validadoAuth') == 'true'){
             Cache::put('validado', 'true');
             return $next($request);
         }
+
+
+        if($request->has('validadoAuth') && request('validadoAuth') == 'false'){
+            Cache::flush();
+        }
+        
 
         if($validado == 'true'){
             return $next($request);
@@ -32,4 +38,9 @@ class ValidarAcceso
 
         return response()->json(['status' => 'error'], 401);  
     }
+
+
+
+
 }
+
