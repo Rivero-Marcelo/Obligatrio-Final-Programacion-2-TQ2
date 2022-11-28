@@ -29,6 +29,17 @@
                              <input type="submit" value="Confirmar Compra"><br>
         </form>
     </div>
+    <br>
+
+    @if(session('success'))
+    -------------------------------------------------------
+    <div style="color: red;">{{session('success')}}</div>
+    ------------------------------------------------------
+    @endif
+
+    <br><br><br>
+
+    <a href={{route('compra.create')}}>Volver a Compras</a>
     
 </body>
 </html>

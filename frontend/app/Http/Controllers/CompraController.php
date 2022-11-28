@@ -35,14 +35,34 @@ class CompraController extends Controller
 
         ]);
 
-        return redirect()->action([CompraController::class]);
+        if($response['status'] === "OK"){
+
+           $response = Http::post('localhost:8800/api/producto/upds', [
+            
+            'id' => $request->post('idProducto'),
+            'cantidad' => $request->post('cantidad')
+        ]);
+
+        return back()->withSuccess('Compra Finalizada');
+
+        }
+
     }
 
     
     
-    private function actualizarStock(Request $request){
+    private static function actualizarStock($id, $cantidad){
 
-        $response = Http::acceptJson()->get('localhost:8800/api/producto');
+        return $id;
+
+
+        $response = Http::post('localhost:8800/api/producto/upds', [
+            
+            'id' => $id,
+            'cantidad' => $cantidad
+        ]);
+
+        return $response;
 
         
     }

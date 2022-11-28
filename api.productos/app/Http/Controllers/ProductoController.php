@@ -78,5 +78,20 @@ class ProductoController extends Controller
 
     }
 
+    
+    public function updateStock(Request $request){
+
+       // Producto::where('id', $request->post('id'))->update(['stock' => $request->post('cantidad')])
+    
+       $producto = Producto::findOrFail($request->post('id'));
+       $producto -> stock = $producto -> stock - $request->post('cantidad');
+       $producto -> save();
+
+       return [
+        'status' => "OK"
+       ];
+
+    }
+
 
 }

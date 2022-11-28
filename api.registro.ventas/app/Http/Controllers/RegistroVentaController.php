@@ -17,7 +17,12 @@ class RegistroVentaController extends Controller
             
         ]);
 
-        return $venta;
+        return [
+
+            'status'=> "OK",
+            'registro' => $venta
+
+        ];
 
 
     }
