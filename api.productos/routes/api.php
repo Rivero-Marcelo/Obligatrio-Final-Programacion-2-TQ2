@@ -28,6 +28,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware([ValidarAcceso::class])->group(function(){
 
+Route::post('/', function(){
+    return [
+
+        'status' => "OK",
+    ];
+
+});
+
+
 Route::post('/producto', [ProductoController::class, "store"]);
 Route::get('/producto', [ProductoController::class, "index"]);
 Route::get('/producto/{d}', [ProductoController::class, "show"]);

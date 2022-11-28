@@ -17,7 +17,7 @@ class Sesion
     public function handle(Request $request, Closure $next)
     {
         
-        if($request->session()->get('autenticado') == true){
+        if($request->session()->get('autenticado') === true){
             return $next($request);
         }
 

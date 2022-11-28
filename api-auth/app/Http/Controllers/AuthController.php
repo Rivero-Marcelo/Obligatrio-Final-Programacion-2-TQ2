@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
-
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -33,6 +33,8 @@ class AuthController extends Controller
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'No autorizado, credenciales inválidas.'], 401);
         }
+
+        AuthController::validado($token);
 
         return $this->respondWithToken($token);
     }
@@ -100,4 +102,19 @@ class AuthController extends Controller
             'user' => $user
         ], 201);
     }
+
+
+
+    public static function validado($token){
+
+        $response = Http::post('localhost:8800/api', [
+
+            'validadoAuth' => "OK"
+
+        ]);
+
+
+    }
+
+
 }
