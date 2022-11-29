@@ -1,4 +1,4 @@
-# Obligatrio-Final-Programacion-2
+# Obligatorio-Final-Programacion-2
 
 MARCELO RIVERO TQ2
 
