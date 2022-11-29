@@ -15,11 +15,11 @@ FALTANTES:
 
 PUERTOS:
 
-FRONTEND: php artisan serve (8000)
-API-PRODUCTOS: php artisan serve --port=8800
-API-REGISTROVENTAS: php artisan serve --port=8900
-API-AUTH: php artisan serve --port=8888
-API-CLIENTES: NO OPERATIVA
+- FRONTEND: php artisan serve (8000)
+- API-PRODUCTOS: php artisan serve --port=8800
+- API-REGISTROVENTAS: php artisan serve --port=8900
+- API-AUTH: php artisan serve --port=8888
+- API-CLIENTES: NO OPERATIVA
 
 
 
