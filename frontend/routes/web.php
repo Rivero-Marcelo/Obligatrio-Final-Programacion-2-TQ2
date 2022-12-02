@@ -18,9 +18,7 @@ use App\Http\Middleware\Sesion;
 |
 */
 
-Route::middleware([Sesion::class])->group(function(){
-
-
+Route::middleware('sesion')->group(function(){
 
 // ************** Rutas hacia api-registroVentas ******************* \\
 Route::get('/compras', [CompraController::class, "create"])->name('compra.create');
@@ -29,7 +27,6 @@ Route::post('/compra/confirmar', [CompraController::class, "store"])->name('comp
 Route::get('/compra/listado', [CompraController::class, "showAll"])->name('compra.showAll');
 
 // ***************************************************************** \\
-
 
 // *********** Rutas hacia api-productos ************** \\ 
     Route::get('/home', function (){
@@ -43,21 +40,16 @@ Route::get('/compra/listado', [CompraController::class, "showAll"])->name('compr
 });
 // *************************************************** \\
 
-
-
 // ******* rutas hacia api.auth ************ \\
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
-
-Route::get('/logout', [LogController::class, 'logout'])->name('logout')->middleware(Sesion::class);
+Route::get('/logout', [LogController::class, 'logout'])->name('logout')->middleware('sesion');
 Route::get('/login', [LogController::class, 'index'])->name('login');
 Route::post('/login', [LogController::class, 'autenticar'])->name('autenticar');
 Route::get('/register', [UserController::class, 'create'])->name('usuario.create');
 Route::post('/register', [UserController::class, 'store'])->name('usuario.store');
 
-
 // ****************************************** \\
-

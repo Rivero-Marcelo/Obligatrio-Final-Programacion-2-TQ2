@@ -15,7 +15,7 @@ class ProductoController extends Controller
     
     public function showAll()
     {
-        $response = Http::acceptJson()->get('localhost:8800/api/producto');
+        $response = Http::acceptJson()->get('localhost:'. env('API_PRODUCTOS_PORT') . '/api/producto');
         $productos = json_decode($response, true);
         return view('Productos/listadoProductos',['productos' => $productos]);
    
@@ -24,7 +24,7 @@ class ProductoController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        $response = Http::acceptJson()->delete('localhost:8800/api/producto/' . $id);
+        $response = Http::acceptJson()->delete('localhost:' . env('API_PRODUCTOS_PORT') .'/api/producto/' . $id);
         return redirect()->route('producto.showAll')->with(['success' => 'Producto eliminado']);
 
     }
