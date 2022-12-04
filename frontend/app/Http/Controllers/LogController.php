@@ -22,6 +22,8 @@ class LogController extends Controller
 
     public function autenticar(Request $request) {
 
+       try{
+
       $response = Http::acceptJson()->post('http://localhost:8888/api/auth/login', [
 
         'email' => $request -> post('email'),
@@ -44,6 +46,24 @@ class LogController extends Controller
         return redirect()->route('home');
 
       }
+
+    }catch(\Illuminate\Http\Client\ConnectionException $e){
+
+      
+
+      $error_login=[
+
+        'error_login' => 'Fallo de conexión.'
+
+      ];
+
+      return response()->view('login', [], 500);
+      
+      //return redirect()->back()->
+      
+     // with('error_login', 'Fallo de conexión');
+
+    }
 
         return redirect()->back()->with('error_login', $response['error']);
       

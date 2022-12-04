@@ -14,8 +14,6 @@
             
           </div>
 
-
-
           <div class="col-6">
             <br><br><br>
             <div class="card border-primary border-opacity-25">
@@ -68,6 +66,10 @@
             <div class="alert alert-danger" role="alert">
              {{session()->get('error_login')}}
            </div>
+        @endif
+
+        @if(request())
+        {{dd(response())}}
         @endif
 
       
