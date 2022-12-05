@@ -24,6 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
+Route::get('/check', function(){
+    return response()->json(['status' => 'OK'], 200);  
+});
+
+
 
 
 Route::middleware([ValidarAcceso::class])->group(function(){
@@ -31,7 +36,6 @@ Route::middleware([ValidarAcceso::class])->group(function(){
 Route::post('/', function(){
     return response()->json(['status' => 'OK'], 200);  
 });
-
 
 Route::post('/producto', [ProductoController::class, "store"]);
 Route::get('/producto', [ProductoController::class, "index"]);

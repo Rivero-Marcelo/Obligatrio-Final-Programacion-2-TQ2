@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
+use Exception;
 use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
@@ -34,9 +35,18 @@ class AuthController extends Controller
             return response()->json(['error' => 'No autorizado, credenciales inválidas.'], 401);
         }
 
-        AuthController::validadorAccesoApis($login = 'true');
+        try{
 
+        AuthController::validadorAccesoApis($login = 'true');
         return $this->respondWithToken($token);
+
+         } catch(Exception $e){
+            die();
+
+
+         }
+
+       
     }
 
     /**
@@ -118,6 +128,7 @@ class AuthController extends Controller
             'validadoAuth' => $login
         ]);
 
+       
         
     }
 

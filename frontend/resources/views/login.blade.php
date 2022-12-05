@@ -10,17 +10,9 @@
 
     <div class="container ">
         <div class="row">
-          <div class="col">
-            
+          <div class="col">          
           </div>
-
-<<<<<<< HEAD
-
-
           <div class="col">
-=======
-          <div class="col-6">
->>>>>>> 152fb80d4aa5dce452d2730cb9c5de20a3076d27
             <br><br><br>
             <div class="card border-primary border-opacity-50 bg-light">
 
@@ -74,11 +66,8 @@
            </div>
         @endif
 
-        @if(request())
-        {{dd(response())}}
-        @endif
-
       
+           
  
         </div>
 

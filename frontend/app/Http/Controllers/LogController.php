@@ -24,7 +24,7 @@ class LogController extends Controller
 
        try{
 
-      $response = Http::acceptJson()->post('http://localhost:8888/api/auth/login', [
+      $response = Http::acceptJson()->post('http://localhost:' . env('API_AUTH_PORT') . '/api/auth/login', [
 
         'email' => $request -> post('email'),
         'password' => $request -> post('password'),
@@ -50,18 +50,7 @@ class LogController extends Controller
     }catch(\Illuminate\Http\Client\ConnectionException $e){
 
       
-
-      $error_login=[
-
-        'error_login' => 'Fallo de conexión.'
-
-      ];
-
-      return response()->view('login', [], 500);
-      
-      //return redirect()->back()->
-      
-     // with('error_login', 'Fallo de conexión');
+      return redirect()->back()->with('error_login', 'Fallo de conexión');
 
     }
 
@@ -73,7 +62,7 @@ class LogController extends Controller
 
     public function logout(Request $request) {
 
-    $response = Http::withToken($request->session()->get('token'))->post('http://localhost:8888/api/auth/logout');
+    $response = Http::withToken($request->session()->get('token'))->post('http://localhost:' . env('API_AUTH_PORT') . '/api/auth/logout');
      
      $request->session()->flush();
       

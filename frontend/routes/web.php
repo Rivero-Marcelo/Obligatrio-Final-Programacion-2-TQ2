@@ -28,10 +28,15 @@ Route::get('/compra/listado', [CompraController::class, "showAll"])->name('compr
 
 // ***************************************************************** \\
 
+
+
+Route::get('/home', function (){
+    return view('home'); 
+})->name('home');
+
+
+
 // *********** Rutas hacia api-productos ************** \\ 
-    Route::get('/home', function (){
-        return view('home'); 
-    })->name('home');
 
     Route::post('/producto/nuevo', [ProductoController::class, "store"])->name('producto.store');
     Route::get('/producto/nuevo', [ProductoController::class, "create"])->name('producto.create');
